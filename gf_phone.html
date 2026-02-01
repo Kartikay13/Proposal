@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Poorva 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Arial;
+      background: #fff0f5;
+      text-align: center;
+      margin-top: 60px;
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    h1 { font-size: clamp(24px, 6vw, 40px); }
+
+    #yes {
+      background: hotpink;
+      color: white;
+      font-size: 28px;
+      padding: 18px 40px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    #no {
+      background: #ddd;
+      font-size: 16px;
+      padding: 10px 25px;
+      border-radius: 10px;
+      border: none;
+      position: absolute;
+      left: 55%;
+      top: 55%;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+
+<img src="cat.jpg" width="120" style="border-radius:50%">
+
+<h1>Poorva, will you be my valentine? 💕</h1>
+
+<button id="yes" onclick="yesClicked()">YES</button>
+<button id="no">No</button>
+
+<script>
+  const noBtn = document.getElementById("no");
+  const yesBtn = document.getElementById("yes");
+  let size = 28;
+
+  ["mouseover","touchstart"].forEach(evt => {
+    noBtn.addEventListener(evt, () => {
+
+      // grow YES
+      size += 4;
+      yesBtn.style.fontSize = size + "px";
+
+      // vibrate phone (Android)
+      if (navigator.vibrate) navigator.vibrate(50);
+
+      // move NO (safe for phone)
+      const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - 20);
+      const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - 20);
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    });
+  });
+
+  function yesClicked() {
+    document.body.innerHTML = `
+      <h1>YAYYYYY!!! 💖 Mission passed! Respect +</h1>
+      <p style="font-size:22px;">
+        Terms and conditions apply: Must provide at least 50% of the chocolates back 😌
+      </p>
+      <p style="font-size:16px;">
+        P.S.: Smart move! I cancelled my eBay auction 😏
+      </p>
+    `;
+  }
+</script>
+
+</body>
+</html>
